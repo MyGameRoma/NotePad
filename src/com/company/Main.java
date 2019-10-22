@@ -8,6 +8,7 @@ public class Main {
     static ArrayList<Record> records = new ArrayList<>();
     public static void main(String[] args) {
 
+        scan.useDelimiter("\n");
         System.out.println("Enter your command");
         for ( ; ; ){
             System.out.println("Type>");
@@ -16,6 +17,7 @@ public class Main {
                 case "exit":
                     System.out.println("good bay");
                     return;
+
                 case "help":
                     showHelp();
                     break;
@@ -28,11 +30,21 @@ public class Main {
                     createRecord();
                     break;
 
+                case "find":
+                    searchResult();
 
                 default:
                     System.out.println("Enter command");
             }
 
+        }
+
+    }
+
+    private static void searchResult() {
+        for (Record p : records){
+            System.out.println("What I need find? ");
+            scan.next();
         }
 
     }

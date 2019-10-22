@@ -6,13 +6,17 @@ public class Note extends Record{
     private String text;
 
     @Override
+    public boolean contains(String str) {
+        return super.contains(str)
+                || text.contains(str);
+    }
+
+    @Override
     public void askInfo(){
         System.out.print("Write Thear>> ");
         text = Main.scan.next();
 
-
     }
-
 
     public String getText() {
         return text;

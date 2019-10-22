@@ -10,6 +10,22 @@ public class Person extends Record{
 
 
     @Override
+    public boolean contains(String str) {
+        return super.contains(str)
+
+
+        if (name.contains(str))
+            return true;
+        if (surname.contains(str))
+            return true;
+        if (phone.contains(str))
+            return true;
+        if (email.contains(str))
+            return true;
+        else return false;
+    }
+
+    @Override
     public void askInfo() {
         System.out.print("Name> ");
         name = Main.scan.next();
