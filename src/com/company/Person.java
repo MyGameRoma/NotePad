@@ -9,6 +9,7 @@ public class Person extends Record{
     private String email;
 
 
+    @Override
     public void askInfo() {
         System.out.print("Name> ");
         name = Main.scan.next();

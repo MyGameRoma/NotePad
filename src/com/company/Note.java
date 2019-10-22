@@ -5,7 +5,8 @@ import java.security.PrivateKey;
 public class Note extends Record{
     private String text;
 
-    public void writeText(){
+    @Override
+    public void askInfo(){
         System.out.print("Write Thear>> ");
         text = Main.scan.next();
 

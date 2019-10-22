@@ -23,8 +23,6 @@ public class Main {
                 case "list":
                 showList();
                 break;
-                case "note":
-                    showNote();
 
                 case "create":
                     createRecord();
@@ -37,12 +35,6 @@ public class Main {
 
         }
 
-    }
-
-    private static void showNote() {
-        for (Record p : records){
-            System.out.println(p);
-        }
     }
 
     private static void showList() {
@@ -63,31 +55,27 @@ public class Main {
         String type = scan.next();
         switch (type) {
             case "person":
-                createPerson();
+                createRecord(new Person());
                 break;
             case "note":
-                createNote();
+                createRecord(new Note());
+                break;
+
+            case "alarm":
+                createRecord(new Alarm());
                 break;
             default:
                 System.out.println("Error");
         }
     }
 
-    private static void createNote() {
-        Note n = new Note();
-        n.writeText();
-        records.add(n);
-
-    }
-
-    private static void createPerson() {
-        Person p = new Person();
-        p.askInfo();
-        records.add(p);
+    private static void createRecord(Record r){
+        r.askInfo();
+        records.add(r);
     }
 
 
     private static void showHelp() {
-        System.out.println("HELPPP theare");
+        System.out.println("HELP there");
     }
 }

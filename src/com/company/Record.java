@@ -1,6 +1,6 @@
 package com.company;
 
-public class Record {
+public abstract class Record {
     private static int counter = 0;
     private int id;
 
@@ -10,6 +10,8 @@ public class Record {
         counter++;
         this.id = counter;
     }
+
+    public abstract void askInfo();
 
     public int getId() {
         return id;
