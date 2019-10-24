@@ -42,11 +42,13 @@ public class Main {
     }
 
     private static void searchResult() {
-        for (Record p : records){
-            System.out.println("What I need find? ");
-            scan.next();
+        System.out.print("What to find?>>");
+        String str = scan.next();
+        for (Record r : records){
+            if (r.contains(str)){
+                System.out.println(r);
+            }
         }
-
     }
 
     private static void showList() {
