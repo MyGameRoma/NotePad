@@ -1,5 +1,7 @@
 package com.company;
 
+import javax.swing.*;
+import java.net.SocketOption;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -35,6 +37,10 @@ public class Main {
                     searchResult();
                     break;
 
+                case "clean":
+                    cleanName();
+                    break;
+
                 case "delete":
                     deleteID();
                     break;
@@ -45,6 +51,18 @@ public class Main {
         }
 
     }
+
+    private static void cleanName() {
+        System.out.print("What you want clean?> ");
+        String strc = scan.next();
+        for (Record r : records) {
+                if (r.contains(strc)) {
+                    boolean remove = records.remove(r);
+                    break;
+                }
+        }
+    }
+
 
     private static void deleteID() {
         System.out.print("What ID you want delete?> ");
