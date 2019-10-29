@@ -3,6 +3,8 @@ package com.company;
 import javax.swing.*;
 import java.net.SocketOption;
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.ListIterator;
 import java.util.Scanner;
 
 public class Main {
@@ -47,19 +49,17 @@ public class Main {
                 default:
                     System.out.println("Enter command");
             }
-
         }
-
     }
 
     private static void cleanName() {
         System.out.print("What you want clean?> ");
         String strc = scan.next();
         for (Record r : records) {
-                if (r.contains(strc)) {
-                    boolean remove = records.remove(r);
-                    break;
-                }
+            if (r.contains(strc)) {
+                records.remove(r);
+                break;
+            }
         }
     }
 

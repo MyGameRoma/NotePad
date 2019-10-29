@@ -14,7 +14,6 @@ public class Alarm extends Note {
         System.out.print("Time to alarm ");
         String strtime = Main.scan.next();
         time = LocalTime.parse(strtime, TIME_FORMAT);
-
     }
 
     @Override
@@ -25,13 +24,10 @@ public class Alarm extends Note {
 
 
     public LocalTime getTime() {
-        return time;
-    }
+        return time; }
 
     public void setTime(LocalTime time) {
-        this.time = time;
-
-    }
+        this.time = time; }
 
     @Override
     public String toString() {

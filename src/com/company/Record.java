@@ -1,5 +1,6 @@
 package com.company;
 
+import java.util.InputMismatchException;
 import java.util.SplittableRandom;
 
 public abstract class Record {
