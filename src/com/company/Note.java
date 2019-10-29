@@ -13,8 +13,7 @@ public class Note extends Record{
 
     @Override
     public void askInfo(){
-        System.out.print("Write Thear>> ");
-        text = Main.scan.next();
+        text = Asker.asdString("Write theare");
 
     }
 

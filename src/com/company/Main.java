@@ -8,16 +8,13 @@ import java.util.ListIterator;
 import java.util.Scanner;
 
 public class Main {
-    static final Scanner scan = new Scanner((System.in));
     static ArrayList<Record> records = new ArrayList<>();
 
     public static void main(String[] args) {
 
-        scan.useDelimiter("\n");
         System.out.println("Enter your command");
         for (; ; ) {
-            System.out.println("Type>");
-            String cmd = scan.next();
+            String cmd = Asker.asdString("Type");
             switch (cmd) {
                 case "exit":
                     System.out.println("good bay");
@@ -46,6 +43,7 @@ public class Main {
                 case "delete":
                     deleteID();
                     break;
+
                 default:
                     System.out.println("Enter command");
             }
@@ -53,20 +51,18 @@ public class Main {
     }
 
     private static void cleanName() {
-        System.out.print("What you want clean?> ");
-        String strc = scan.next();
+        String strc = Asker.asdString("What you want clean?");
         for (Record r : records) {
             if (r.contains(strc)) {
                 records.remove(r);
-                break;
+                return;
             }
         }
     }
 
 
     private static void deleteID() {
-        System.out.print("What ID you want delete?> ");
-        int num = scan.nextInt();
+        int num = Asker.askInt("What ID you want delete?");
         for (int i = 0; i < records.size(); i++) {
             Record r = records.get(i);
             if (r.getId() == num) {
@@ -77,8 +73,7 @@ public class Main {
     }
 
     private static void searchResult() {
-        System.out.print("What to find?>>");
-        String str = scan.next();
+        String str = Asker.asdString("What to find?");
         for (Record r : records) {
             if (r.contains(str)) {
                 System.out.println(r);
@@ -100,8 +95,7 @@ public class Main {
     }
 
     private static void createRecord() {
-        System.out.print("What you want create? ");
-        String type = scan.next();
+        String type = Asker.asdString("What you want create?");
         switch (type) {
             case "person":
                 createRecord(new Person());

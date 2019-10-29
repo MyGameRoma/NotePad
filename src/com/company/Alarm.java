@@ -1,25 +1,20 @@
 package com.company;
 
 import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
 
 public class Alarm extends Note {
-    public static final DateTimeFormatter TIME_FORMAT
-            = DateTimeFormatter.ofPattern("HH:mm");
     private LocalTime time;
 
     @Override
     public void askInfo() {
         super.askInfo();
-        System.out.print("Time to alarm ");
-        String strtime = Main.scan.next();
-        time = LocalTime.parse(strtime, TIME_FORMAT);
+        time = Asker.askTime("time> ");
     }
 
     @Override
     public boolean contains(String str) {
         return super.contains(str)
-                || time.format(TIME_FORMAT).contains(str);
+                || time.format(Asker.TIME_FORMAT).contains(str);
     }
 
 
@@ -34,7 +29,7 @@ public class Alarm extends Note {
         return "Alarm{" +
                 "id=" + getId() +
                 "text='" + getText() + '\'' +
-                "Time='" + time.format(TIME_FORMAT) + '\'' +
+                "Time='" + time.format(Asker.TIME_FORMAT) + '\'' +
                 '}';
     }
 }
