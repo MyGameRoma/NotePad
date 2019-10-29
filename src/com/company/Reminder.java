@@ -1,9 +1,27 @@
 package com.company;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
-public class Reminder extends Alarm {
+public class Reminder extends Alarm implements Expirable {
     private LocalDate date;
+    private boolean disdata;
+
+    @Override
+    public boolean isExpired() {
+        if (disdata == true) {
+            return false;
+        }
+        var dt = LocalDateTime.of(date, getTime());
+        return LocalDateTime.now().isAfter(dt);
+    }
+
+    @Override
+    public void dissMissExpired() {
+        disdata = true;
+    }
+
+
 
     @Override
     public void askInfo() {

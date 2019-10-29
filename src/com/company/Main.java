@@ -32,6 +32,14 @@ public class Main {
                     createRecord();
                     break;
 
+                case  "expired":
+                    listExpiredRecords();
+                    break;
+
+                case "dis":
+                    disExpiredRecord();
+                    break;
+
                 case "find":
                     searchResult();
                     break;
@@ -48,6 +56,30 @@ public class Main {
                     System.out.println("Enter command");
             }
         }
+    }
+
+    private static void disExpiredRecord() {
+        int id = Asker.askInt("what id Dismiss?");
+        for (Record r : records) {
+            if (r instanceof Expirable ) {
+                Expirable e = (Expirable) r;
+                if (r.getId() == id) {
+                    e.dissMissExpired();
+                }
+            }
+        }
+    }
+
+    private static void listExpiredRecords() {
+        for (Record r : records) {
+            if (r instanceof  Expirable) {
+                Expirable e = (Expirable) r;
+                if (e.isExpired()) {
+                    System.out.println(r);
+                }
+            }
+        }
+
     }
 
     private static void cleanName() {

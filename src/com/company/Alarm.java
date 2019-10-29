@@ -1,9 +1,11 @@
 package com.company;
 
+import java.time.LocalDate;
 import java.time.LocalTime;
 
-public class Alarm extends Note {
+public class Alarm extends Note implements Expirable{
     private LocalTime time;
+    private LocalDate disMissedAdd;
 
     @Override
     public void askInfo() {
@@ -32,4 +34,18 @@ public class Alarm extends Note {
                 "Time='" + time.format(Asker.TIME_FORMAT) + '\'' +
                 '}';
     }
+
+    @Override
+    public boolean isExpired() {
+        if (LocalDate.now().equals(disMissedAdd)){
+            return false;
+        }
+        return LocalTime.now().isAfter(time);
+    }
+
+    @Override
+    public void dissMissExpired() {
+        disMissedAdd = LocalDate.now();
+    }
+
 }
