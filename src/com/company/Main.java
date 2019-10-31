@@ -32,7 +32,7 @@ public class Main {
                     createRecord();
                     break;
 
-                case  "expired":
+                case "expired":
                     listExpiredRecords();
                     break;
 
@@ -61,7 +61,7 @@ public class Main {
     private static void disExpiredRecord() {
         int id = Asker.askInt("what id Dismiss?");
         for (Record r : records) {
-            if (r instanceof Expirable ) {
+            if (r instanceof Expirable) {
                 Expirable e = (Expirable) r;
                 if (r.getId() == id) {
                     e.dissMissExpired();
@@ -72,7 +72,7 @@ public class Main {
 
     private static void listExpiredRecords() {
         for (Record r : records) {
-            if (r instanceof  Expirable) {
+            if (r instanceof Expirable) {
                 Expirable e = (Expirable) r;
                 if (e.isExpired()) {
                     System.out.println(r);
@@ -84,12 +84,13 @@ public class Main {
 
     private static void cleanName() {
         String strc = Asker.asdString("What you want clean?");
-        for (Record r : records) {
-            if (r.contains(strc)) {
-                records.remove(r);
-                return;
-            }
-        }
+        records.removeIf(r -> r.contains(strc));
+//        while (iterator.hasNext()) {
+//            Record r = iterator.next();
+//            if (r.contains(strc)) {
+//               iterator.remove();
+//            }
+//        }
     }
 
 
